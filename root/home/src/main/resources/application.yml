@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: home
+  dubbo:
+      application:
+        name: ${spring.application.name}
+      registry:
+        protocol: zookeeper
+        address: ckzk1:2181,ckzk2:2182,ckzk3:2183
+      scan: com.cookie.home
+  session:
+    store-type: redis
+  redis:
+    host: ckredis
+    port: 6379
+server:
+  port: 8082

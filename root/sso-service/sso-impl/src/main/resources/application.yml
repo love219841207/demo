@@ -1,0 +1,51 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: sso-service
+  dubbo:
+    application:
+      name: ${spring.application.name}
+    registry:
+      protocol: zookeeper
+      address: ckzk1:2181,ckzk2:2182,ckzk3:2183
+    protocol:
+      name: dubbo
+      port: 20081
+    scan: com.cookie.sso
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://ckdb:3306/cookie?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&rewriteBatchedStatements=TRUE&useSSL=false
+    username: root
+    password: 123456
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+  redis:
+    host: ckredis
+    port: 6379
+    timeout: 0
+server:
+  port: 8081
+mybatis:
+    type-aliases-package: com.cookie.sso.model
+    mapper-locations: classpath:mapper/*.xml
+
+mapper:
+    mappers:
+        - com.cookie.framework.base.MyMapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
