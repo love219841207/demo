@@ -105,9 +105,9 @@ public class BaseService<T> {
      * @return
 
      */
-    public PageBean<T> getPageBeanByExample(int pageNum, int pageSize, Object example){
+    public PageBean<T> getPageBeanByExample(int pageNum, int pageSize, T example){
         PageHelper.startPage(pageNum, pageSize, true);
-        List<T> list=selectByExample(example);
+        List<T> list=select(example);
         return new PageBean<T>(list);
     }
     /**
