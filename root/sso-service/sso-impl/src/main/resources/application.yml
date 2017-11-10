@@ -15,7 +15,7 @@ spring:
     scan: com.cookie.sso
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://ckdb:3306/cookie?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&rewriteBatchedStatements=TRUE&useSSL=false
+    url: jdbc:mysql://ckdb:3306/shiro?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&rewriteBatchedStatements=TRUE&useSSL=false
     username: root
     password: 123456
     initialSize: 5
